@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.meongnyang.shop.repository.TodoMapper">
+
+    <insert id="save" parameterType="com.meongnyang.shop.entity.Todo">
+        insert into todo_tb
+        values(0, #{title}, #{content})
+    </insert>
+
+
+    <select id="findByTodoId" resultType="com.meongnyang.shop.entity.Todo">
+        select
+            todoId,
+            content
+        from
+            todo_tb
+        where
+            todoId = #{todoId}
+    </select>
+
+    <update id="update" parameterType="com.meongnyang.shop.entity.Todo">
+        update todo_tb
+        set
+            title = #{title},
+            content = #{content}
+        where
+            todoId = #{todoId}
+    </update>
+
+    <delete id="delete" parameterType="com.meongnyang.shop.entity.Todo">
+        delete
+        from
+            todo_tb
+        where
+            todoId = #{todoId}
+    </delete>
+</mapper>
